@@ -17,8 +17,5 @@
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
     "deploy": "git push"
-  },
-  "dependencies": {
-    "@furman1331/page-scroller": "^1.1.3"
   }
 }

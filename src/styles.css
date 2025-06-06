@@ -94,11 +94,6 @@ h6 {
   --secondary-colour-lightest: #e5f0f0;
   --colour-white: #f9f9f9;
 }
-
-.grecaptcha-badge {
-  visibility: hidden;
-}
-
 /* header {
   display: flex;
   justify-content: center;
@@ -123,44 +118,6 @@ h2,
 h3 {
   font-family: "Montserrat";
 }
-
-.icons-container,
-.screenshot,
-.project-links {
-  display: flex;
-  justify-content: center;
-}
-
-.icons-container {
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.icon-div {
-  text-align: center;
-}
-
-.project-div {
-  margin-top: 1rem;
-}
-
-.screenshot {
-  margin-bottom: 0.5rem;
-}
-
-.project-links {
-  gap: 2rem;
-}
-
-a {
-  color: var(--colour-white);
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 /* My CSS declaration Order
     Positioning
     Display
