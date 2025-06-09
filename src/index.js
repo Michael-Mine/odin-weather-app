@@ -1,10 +1,12 @@
 import "./styles.css";
+import json from "./responseFormat.json" with { type: "json" }
 
 async function getWeatherFullData(location) {
   const url =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
     location +
     "?key=KGNPQ92K2A2D2GK96CV98SB3F";
+  // API key is free and publicly available, so exposed for this personal study project
   try {
     const response = await fetch(url, { mode: "cors" });
     if (!response.ok) {
@@ -18,7 +20,11 @@ async function getWeatherFullData(location) {
   }
 }
 
-let fullWeatherData = getWeatherFullData("london");
+// let fullWeatherData = getWeatherFullData("london");
+
+let fullWeatherData = json;
+
+console.log(fullWeatherData);
 
 function processWeatherData() {
   let appWeatherData = {
@@ -28,4 +34,23 @@ function processWeatherData() {
   console.log(appWeatherData);
 }
 
-processWeatherData();
+// processWeatherData();
+
+function processWeatherFactory(period) {
+  return {
+    day,
+    time,
+    conditions,
+    icon,
+    temp,
+    feelslike,
+    uvindex,
+    humidity,
+    precipprob,
+    sunrise,
+    sunset,
+    moonphase,
+  };
+}
+
+let weatherData = [];
