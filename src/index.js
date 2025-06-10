@@ -1,5 +1,5 @@
 import "./styles.css";
-import json from "./responseFormat.json" with { type: "json" }
+import json from "./responseFormat.json" with { type: "json" };
 
 async function getWeatherFullData(location) {
   const url =
@@ -26,31 +26,78 @@ let fullWeatherData = json;
 
 console.log(fullWeatherData);
 
-function processWeatherData() {
+function processLocationData() {
   let appWeatherData = {
     location: fullWeatherData.resolvedAddress,
-    description: fullWeatherData.description,
+    alerts: fullWeatherData.alerts,
   };
   console.log(appWeatherData);
 }
 
-// processWeatherData();
+processLocationData();
 
-function processWeatherFactory(period) {
+function createWeatherPeriod(period) {
+  const periodData = fullWeatherData[period];
+  const dateToday = new Date();
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let day;
+  let date;
+  let month;
+  let year;
+
+  if (period === "currentConditions") {
+    day = days[dateToday.getDay()];
+    date = dateToday.getDate();
+    month = months[dateToday.getMonth()];
+    year = dateToday.getFullYear();
+  }
+  // const day = fullWeatherData.days;
+
+  let fullDate = day + " " + date + " " + month + " " + year;
+
   return {
-    day,
-    time,
-    conditions,
-    icon,
-    temp,
-    feelslike,
-    uvindex,
-    humidity,
-    precipprob,
-    sunrise,
-    sunset,
-    moonphase,
+    period,
+    time: periodData.datetime,
+    fullDate,
+    conditions: periodData.conditions,
+    icon: periodData.icon,
+    temp: periodData.temp,
+    feelslike: periodData.feelslike,
+    uvindex: periodData.uvindex,
+    humidity: periodData.humidity,
+    precipprob: periodData.precipprob,
+    sunrise: periodData.sunrise,
+    sunset: periodData.sunset,
+    moonphase: periodData.moonphase,
   };
 }
 
-let weatherData = [];
+let forecastData = [];
+
+const currentWeather = createWeatherPeriod("currentConditions");
+
+forecastData.push(currentWeather);
+
+console.log(forecastData);
