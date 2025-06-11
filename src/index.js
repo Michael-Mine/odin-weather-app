@@ -83,8 +83,10 @@ function getPeriodData(period, dayPeriod, hourPeriod) {
 
 function createWeatherPeriod(period, dayPeriod, hourPeriod) {
   const periodData = getPeriodData(period, dayPeriod, hourPeriod);
-
-  const time = (period !== "currentConditions" || !hourPeriod) ? "All day" : periodData.datetime;
+  const time =
+    period !== "currentConditions" && !hourPeriod
+      ? "All day"
+      : periodData.datetime;
 
   return {
     period,
@@ -103,21 +105,24 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
   };
 }
 
-let forecastData = [];
-
-const currentWeather = createWeatherPeriod("currentConditions");
-const todayWeather = createWeatherPeriod("days", "0");
-const hourWeather = createWeatherPeriod("days", "0", "1");
-
-// forecastData.push(currentWeather);
-forecastData.push(todayWeather);
-// forecastData.push(hourWeather);
+const forecastData = [];
 
 function addDaysForecast() {
-  for (let index = 1; index < 15; index++) {
-    let dayPeriod = index;
+  const currentWeather = createWeatherPeriod("currentConditions");
+  const todayWeather = createWeatherPeriod("days", "0");
+  forecastData.push(currentWeather);
+  forecastData.push(todayWeather);
+
+  for (let index = 0; index < 15; index++) {
     let dayForecast = createWeatherPeriod("days", index);
-    forecastData.push(dayForecast);
+    forecastData.push(dayForecast)
+
+    let midnightForecast = createWeatherPeriod("days", index, "0");
+    forecastData.push(midnightForecast);
+    for (let j = 1; j < 24; j++) {
+      let hourForecast = createWeatherPeriod("days", index, j);
+      forecastData.push(hourForecast);
+    }
   }
 }
 
