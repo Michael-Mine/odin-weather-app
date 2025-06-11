@@ -21,7 +21,6 @@ async function getWeatherFullData(location) {
 }
 
 // let fullWeatherData = getWeatherFullData("london");
-
 let fullWeatherData = json;
 
 console.log(fullWeatherData);
@@ -36,9 +35,7 @@ function processLocationData() {
 
 processLocationData();
 
-function createWeatherPeriod(period) {
-  const periodData = fullWeatherData[period];
-  const dateToday = new Date();
+function getFullDate(dayPeriod) {
   const days = [
     "Sunday",
     "Monday",
@@ -62,25 +59,37 @@ function createWeatherPeriod(period) {
     "November",
     "December",
   ];
-  let day;
-  let date;
-  let month;
-  let year;
 
-  if (period === "currentConditions") {
-    day = days[dateToday.getDay()];
-    date = dateToday.getDate();
-    month = months[dateToday.getMonth()];
-    year = dateToday.getFullYear();
+  const dateFull = new Date();
+
+  if (dayPeriod > 0) {
+    dateFull.setDate(dateFull.getDate() + dayPeriod);
   }
-  // const day = fullWeatherData.days;
 
-  let fullDate = day + " " + date + " " + month + " " + year;
+  const dayOfWeek = days[dateFull.getDay()];
+  const dateOfMonth = dateFull.getDate();
+  const month = months[dateFull.getMonth()];
+  const year = dateFull.getFullYear();
+
+  return dayOfWeek + " " + dateOfMonth + " " + month + " " + year;
+}
+
+function getPeriodData(period, dayPeriod, hourPeriod) {
+  if (hourPeriod)
+    return fullWeatherData[period][dayPeriod]["hours"][hourPeriod];
+  if (dayPeriod) return fullWeatherData[period][dayPeriod];
+  return fullWeatherData[period];
+}
+
+function createWeatherPeriod(period, dayPeriod, hourPeriod) {
+  const periodData = getPeriodData(period, dayPeriod, hourPeriod);
+
+  const time = (period !== "currentConditions" || !hourPeriod) ? "All day" : periodData.datetime;
 
   return {
     period,
-    time: periodData.datetime,
-    fullDate,
+    time,
+    fullDate: getFullDate(dayPeriod),
     conditions: periodData.conditions,
     icon: periodData.icon,
     temp: periodData.temp,
@@ -97,7 +106,21 @@ function createWeatherPeriod(period) {
 let forecastData = [];
 
 const currentWeather = createWeatherPeriod("currentConditions");
+const todayWeather = createWeatherPeriod("days", "0");
+const hourWeather = createWeatherPeriod("days", "0", "1");
 
-forecastData.push(currentWeather);
+// forecastData.push(currentWeather);
+forecastData.push(todayWeather);
+// forecastData.push(hourWeather);
+
+function addDaysForecast() {
+  for (let index = 1; index < 15; index++) {
+    let dayPeriod = index;
+    let dayForecast = createWeatherPeriod("days", index);
+    forecastData.push(dayForecast);
+  }
+}
+
+addDaysForecast();
 
 console.log(forecastData);
