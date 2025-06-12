@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A portfolio website for Michael Mine, a JavaScript Full-Stack Web Developer, with live projects to view and a contact form."
+      content="A weather app website by Michael Mine, a JavaScript Full-Stack Web Developer."
     />
     <title>Michael Mine | Weather App</title>
     <link
@@ -24,12 +24,47 @@
     <link rel="manifest" href="images/favicon/site.webmanifest" />
   </head>
   <body>
+    <header>
+      <div>
+        <a href="https://mrmine.net/">
+          <img
+            src="images/logo.png"
+            alt="developer logo"
+            height="50px"
+            width="121px"
+          />
+        </a>
+      </div>
+      <div class="header-title">
+        <img
+          src="images/weather-sunset.svg"
+          alt="list logo"
+          class="header-logo"
+          height="50px"
+          width="50px"
+        />
+        <h1>Weather App</h1>
+      </div>
+      <div>
+        <a href="https://github.com/Michael-Mine">
+          <img
+            src="images/github-mark.svg"
+            alt="github-mark"
+            class="header-logo"
+            height="50px"
+            width="50px"
+          />
+        </a>
+      </div>
+    </header>
     <form>
+      <br>
       <div>
         <label for="location">Location:</label>
-        <input type="text" name="location" id="location" >
-        <button>Enter</button>
-    </div>
+        <input type="text" name="location" id="location" />
+        <button>Search</button>
+      </div>
+      <br>
     </form>
   </body>
 </html>

@@ -3,13 +3,9 @@ let fullWeatherData = json;
 // const fullWeatherData = getWeatherFullData("london");
 
 export let locationData;
-export const forecastData = [];
+export let forecastData = [];
 
-export function getNewLocation(location) {
-  fullWeatherData = getWeatherFullData(location);
-}
-
-async function getWeatherFullData(location) {
+export async function getWeatherFullData(location) {
   const url =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
     location +
@@ -26,6 +22,7 @@ async function getWeatherFullData(location) {
     console.log(fullWeatherData);
     processLocationData();
     console.log(locationData);
+    forecastData = [];
     addDaysForecast();
     console.log(forecastData);
   } catch (error) {
