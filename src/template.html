@@ -24,47 +24,60 @@
     <link rel="manifest" href="images/favicon/site.webmanifest" />
   </head>
   <body>
-    <header>
-      <div>
-        <a href="https://mrmine.net/">
+    <main>
+      <header>
+        <div>
+          <a href="https://mrmine.net/">
+            <img
+              src="images/logo.png"
+              alt="developer logo"
+              height="50px"
+              width="121px"
+            />
+          </a>
+        </div>
+        <div class="header-title">
           <img
-            src="images/logo.png"
-            alt="developer logo"
-            height="50px"
-            width="121px"
-          />
-        </a>
-      </div>
-      <div class="header-title">
-        <img
-          src="images/weather-sunset.svg"
-          alt="list logo"
-          class="header-logo"
-          height="50px"
-          width="50px"
-        />
-        <h1>Weather App</h1>
-      </div>
-      <div>
-        <a href="https://github.com/Michael-Mine">
-          <img
-            src="images/github-mark.svg"
-            alt="github-mark"
+            src="images/weather-sunset.svg"
+            alt="list logo"
             class="header-logo"
             height="50px"
             width="50px"
           />
-        </a>
+          <h1>Weather App</h1>
+        </div>
+        <div>
+          <a href="https://github.com/Michael-Mine">
+            <img
+              src="images/github-mark.svg"
+              alt="github-mark"
+              class="header-logo"
+              height="50px"
+              width="50px"
+            />
+          </a>
+        </div>
+      </header>
+      <br />
+      <form>
+        <div>
+          <label for="location">Location:</label>
+          <input type="text" name="location" id="location" />
+          <button>Search</button>
+        </div>
+      </form>
+      <br />
+      <h2 id="location-header">London, England, United Kingdom</h2>
+      <div class="alerts">
+        <h3 id="alerts-event"></h3>
+        <p id="alerts-headline"></p>
+        <p id="alerts-start"></p>
+        <p id="alerts-end"></p>
+        <a id="alerts-link"></a>
       </div>
-    </header>
-    <form>
-      <br>
-      <div>
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location" />
-        <button>Search</button>
-      </div>
-      <br>
-    </form>
+      <div id="data-table">Hi</div>
+    </main>
   </body>
 </html>
+
+<!-- add aside for past searches using local storage -->

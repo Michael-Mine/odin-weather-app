@@ -9,3 +9,4 @@ button.addEventListener("click", (event) => {
   console.log(location.value);
   getWeatherFullData(location.value);
 });
+

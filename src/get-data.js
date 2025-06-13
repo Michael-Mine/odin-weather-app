@@ -2,6 +2,8 @@ import json from "./responseFormat.json" with { type: "json" };
 let fullWeatherData = json;
 // const fullWeatherData = getWeatherFullData("london");
 
+import { displayLocation, displayAlerts } from "./display-data";
+
 export let locationData;
 export let forecastData = [];
 
@@ -25,6 +27,9 @@ export async function getWeatherFullData(location) {
     forecastData = [];
     addDaysForecast();
     console.log(forecastData);
+    displayLocation(locationData.location);
+    displayAlerts(locationData.alerts)
+
   } catch (error) {
     console.error(error.message);
   }
