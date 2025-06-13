@@ -2,7 +2,11 @@ import json from "./responseFormat.json" with { type: "json" };
 let fullWeatherData = json;
 // const fullWeatherData = getWeatherFullData("london");
 
-import { displayLocation, displayAlerts } from "./display-data";
+import {
+  displayLocation,
+  displayAlerts,
+  displayForecast,
+} from "./display-data";
 
 export let locationData;
 export let forecastData = [];
@@ -28,8 +32,8 @@ export async function getWeatherFullData(location) {
     addDaysForecast();
     console.log(forecastData);
     displayLocation(locationData.location);
-    displayAlerts(locationData.alerts)
-
+    displayAlerts(locationData.alerts);
+    forecastData.forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
   }
@@ -102,13 +106,13 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
     conditions: periodData.conditions,
     icon: periodData.icon,
     temp: periodData.temp,
-    feelslike: periodData.feelslike,
-    uvindex: periodData.uvindex,
+    feelsLike: periodData.feelslike,
+    uvIndex: periodData.uvindex,
     humidity: periodData.humidity,
-    precipprob: periodData.precipprob,
+    precipProb: periodData.precipprob,
     sunrise: periodData.sunrise,
     sunset: periodData.sunset,
-    moonphase: periodData.moonphase,
+    moonPhase: periodData.moonphase,
   };
 }
 
