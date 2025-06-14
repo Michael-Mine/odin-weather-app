@@ -87,6 +87,5 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(moonPhase);
 }
 
-// reduce for days initially
 // button for hours to filter and re-display
 // add icons for icon, UV moon

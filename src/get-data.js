@@ -6,7 +6,7 @@ import {
   displayLocation,
   displayAlerts,
   displayForecast,
-  removeForecast
+  removeForecast,
 } from "./display-data";
 
 export let degrees = "F";
@@ -20,7 +20,11 @@ export function changeDegrees() {
     addDaysForecast();
     console.log(forecastData);
     removeForecast();
-    forecastData.forEach(displayForecast);
+    forecastData
+      .filter((item) => {
+        return item.period === "currentConditions" || item.time === "All day";
+      })
+      .forEach(displayForecast);
   }
 }
 
@@ -47,7 +51,12 @@ export async function getWeatherFullData(location) {
     displayLocation(locationData.location);
     displayAlerts(locationData.alerts);
     removeForecast();
-    forecastData.forEach(displayForecast);
+    forecastData
+      .filter((item) => {
+        return item.period === "currentConditions" || item.time === "All day";
+      })
+      .forEach(displayForecast);
+    // forecastData.forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
   }
