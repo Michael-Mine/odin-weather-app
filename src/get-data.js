@@ -133,4 +133,6 @@ function addDaysForecast() {
       forecastData.push(hourForecast);
     }
   }
+  forecastData[0].fullDate = "Now";
+  forecastData.splice(2, 1);
 }

@@ -10,18 +10,21 @@ function changeAlertsDateTime(datetime) {
 }
 
 export function displayAlerts(alerts) {
-  const alertsEvent = document.querySelector("#alerts-event");
-  const alertsHeadline = document.querySelector("#alerts-headline");
-  const alertsStart = document.querySelector("#alerts-start");
-  const alertsEnd = document.querySelector("#alerts-end");
-  const alertsLink = document.querySelector("#alerts-link");
+  if (alerts.length > 0) {
+    const alertsEvent = document.querySelector("#alerts-event");
+    const alertsHeadline = document.querySelector("#alerts-headline");
+    const alertsStart = document.querySelector("#alerts-start");
+    const alertsEnd = document.querySelector("#alerts-end");
+    const alertsLink = document.querySelector("#alerts-link");
 
-  alertsEvent.textContent = alerts[0].event;
-  alertsHeadline.textContent = alerts[0].headline;
-  alertsStart.textContent = "Starting " + changeAlertsDateTime(alerts[0].onset);
-  alertsEnd.textContent = "Ending " + changeAlertsDateTime(alerts[0].ends);
-  alertsLink.textContent = alerts[0].link;
-  alertsLink.href = alerts[0].link;
+    alertsEvent.textContent = alerts[0].event;
+    alertsHeadline.textContent = alerts[0].headline;
+    alertsStart.textContent =
+      "Starting " + changeAlertsDateTime(alerts[0].onset);
+    alertsEnd.textContent = "Ending " + changeAlertsDateTime(alerts[0].ends);
+    alertsLink.textContent = alerts[0].link;
+    alertsLink.href = alerts[0].link;
+  }
 }
 
 export function displayForecast(arrayItem) {
@@ -77,3 +80,10 @@ export function displayForecast(arrayItem) {
   moonPhase.textContent = arrayItem.moonPhase;
   newRow.appendChild(moonPhase);
 }
+
+// add degrees and %
+// add degrees change
+// reduce for days initially
+// button for hours to filter and re-display
+// change current
+// add icons for icon, UV moon
