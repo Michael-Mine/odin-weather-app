@@ -1,3 +1,5 @@
+import { degrees } from "./get-data";
+
 export function displayLocation(location) {
   const locationHeader = document.querySelector("#location-header");
   locationHeader.textContent = location;
@@ -26,9 +28,13 @@ export function displayAlerts(alerts) {
     alertsLink.href = alerts[0].link;
   }
 }
+const tableBody = document.querySelector("#tbody");
+
+export function removeForecast() {
+  tableBody.replaceChildren();
+}
 
 export function displayForecast(arrayItem) {
-  const tableBody = document.querySelector("#tbody");
   const newRow = document.createElement("tr");
   tableBody.appendChild(newRow);
 
@@ -49,11 +55,11 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(conditions);
 
   const temp = document.createElement("td");
-  temp.textContent = arrayItem.temp;
+  temp.textContent = Math.round(arrayItem.temp) + "\u00B0" + degrees;
   newRow.appendChild(temp);
 
   const feelsLike = document.createElement("td");
-  feelsLike.textContent = arrayItem.feelsLike;
+  feelsLike.textContent = Math.round(arrayItem.feelsLike) + "\u00B0" + degrees;
   newRow.appendChild(feelsLike);
 
   const uvIndex = document.createElement("td");
@@ -61,11 +67,11 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(uvIndex);
 
   const humidity = document.createElement("td");
-  humidity.textContent = arrayItem.humidity;
+  humidity.textContent = Math.round(arrayItem.humidity) + "%";
   newRow.appendChild(humidity);
 
   const precipProb = document.createElement("td");
-  precipProb.textContent = arrayItem.precipProb;
+  precipProb.textContent = Math.round(arrayItem.precipProb) + "%";
   newRow.appendChild(precipProb);
 
   const sunrise = document.createElement("td");
@@ -81,9 +87,6 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(moonPhase);
 }
 
-// add degrees and %
-// add degrees change
 // reduce for days initially
 // button for hours to filter and re-display
-// change current
 // add icons for icon, UV moon

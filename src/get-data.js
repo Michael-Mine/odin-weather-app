@@ -6,10 +6,23 @@ import {
   displayLocation,
   displayAlerts,
   displayForecast,
+  removeForecast
 } from "./display-data";
 
+export let degrees = "F";
 export let locationData;
 export let forecastData = [];
+
+export function changeDegrees() {
+  degrees === "F" ? (degrees = "C") : (degrees = "F");
+  if (forecastData[0]) {
+    forecastData = [];
+    addDaysForecast();
+    console.log(forecastData);
+    removeForecast();
+    forecastData.forEach(displayForecast);
+  }
+}
 
 export async function getWeatherFullData(location) {
   const url =
@@ -33,6 +46,7 @@ export async function getWeatherFullData(location) {
     console.log(forecastData);
     displayLocation(locationData.location);
     displayAlerts(locationData.alerts);
+    removeForecast();
     forecastData.forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
@@ -98,6 +112,12 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
     period !== "currentConditions" && !hourPeriod
       ? "All day"
       : periodData.datetime;
+  let temp = periodData.temp;
+  let feelsLike = periodData.feelslike;
+  if (degrees === "C") {
+    temp = (temp - 32) / (9 / 5);
+    feelsLike = (feelsLike - 32) / (9 / 5);
+  }
 
   return {
     period,
@@ -105,8 +125,8 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
     fullDate: getFullDate(dayPeriod),
     conditions: periodData.conditions,
     icon: periodData.icon,
-    temp: periodData.temp,
-    feelsLike: periodData.feelslike,
+    temp,
+    feelsLike,
     uvIndex: periodData.uvindex,
     humidity: periodData.humidity,
     precipProb: periodData.precipprob,

@@ -1,8 +1,10 @@
 import "./styles.css";
-import { getWeatherFullData } from "./get-data";
+import "./toggle.css";
+import { getWeatherFullData, changeDegrees } from "./get-data";
 
 const location = document.querySelector("#location");
 const button = document.querySelector("button");
+const degrees = document.querySelector("#degrees");
 
 button.addEventListener("click", (event) => {
   event.preventDefault();
@@ -10,3 +12,10 @@ button.addEventListener("click", (event) => {
   getWeatherFullData(location.value);
 });
 
+degrees.addEventListener("change", () => {
+  if (degrees.checked) {
+    changeDegrees()
+  } else {
+    changeDegrees()
+  }
+});
