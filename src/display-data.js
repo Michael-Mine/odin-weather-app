@@ -46,6 +46,12 @@ export function displayForecast(arrayItem) {
   time.textContent = arrayItem.time;
   newRow.appendChild(time);
 
+  if (arrayItem.time === "Full day") {
+    const hourButton = document.createElement("button");
+    hourButton.textContent = "Hourly";
+    time.appendChild(hourButton);
+  }
+
   const icon = document.createElement("td");
   icon.textContent = arrayItem.icon;
   newRow.appendChild(icon);

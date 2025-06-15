@@ -22,7 +22,7 @@ export function changeDegrees() {
     removeForecast();
     forecastData
       .filter((item) => {
-        return item.period === "currentConditions" || item.time === "All day";
+        return item.period === "currentConditions" || item.time === "Full day";
       })
       .forEach(displayForecast);
   }
@@ -53,7 +53,7 @@ export async function getWeatherFullData(location) {
     removeForecast();
     forecastData
       .filter((item) => {
-        return item.period === "currentConditions" || item.time === "All day";
+        return item.period === "currentConditions" || item.time === "Full day";
       })
       .forEach(displayForecast);
     // forecastData.forEach(displayForecast);
@@ -119,7 +119,7 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
   const periodData = getPeriodData(period, dayPeriod, hourPeriod);
   const time =
     period !== "currentConditions" && !hourPeriod
-      ? "All day"
+      ? "Full day"
       : periodData.datetime;
   let temp = periodData.temp;
   let feelsLike = periodData.feelslike;
