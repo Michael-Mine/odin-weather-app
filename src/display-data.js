@@ -1,4 +1,4 @@
-import { degrees } from "./get-data";
+import { degrees, forecastData } from "./get-data";
 
 export function displayLocation(location) {
   const locationHeader = document.querySelector("#location-header");
@@ -34,6 +34,27 @@ export function removeForecast() {
   tableBody.replaceChildren();
 }
 
+function displayDayHourly(day) {
+  removeForecast()
+  forecastData.filter((item) => {
+    return item.fullDate === day
+  })
+  .forEach(displayForecast);
+
+  const backButton = document.createElement("button");
+  backButton.textContent = "Back";
+  tableBody.appendChild(backButton);
+
+  backButton.addEventListener("click", () => {
+    removeForecast();
+    forecastData
+      .filter((item) => {
+        return item.period === "currentConditions" || item.time === "Full day";
+      })
+      .forEach(displayForecast)
+  })
+} 
+
 export function displayForecast(arrayItem) {
   const newRow = document.createElement("tr");
   tableBody.appendChild(newRow);
@@ -50,6 +71,10 @@ export function displayForecast(arrayItem) {
     const hourButton = document.createElement("button");
     hourButton.textContent = "Hourly";
     time.appendChild(hourButton);
+
+    hourButton.addEventListener("click", () => {
+      displayDayHourly(arrayItem.fullDate)
+    })
   }
 
   const icon = document.createElement("td");
