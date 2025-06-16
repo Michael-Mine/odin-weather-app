@@ -56,6 +56,9 @@ function displayDayHourly(day) {
 } 
 
 export function displayForecast(arrayItem) {
+  const table = document.querySelector("table");
+  table.style.visibility = "visible";
+
   const newRow = document.createElement("tr");
   tableBody.appendChild(newRow);
 

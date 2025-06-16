@@ -59,6 +59,7 @@ export async function getWeatherFullData(location) {
     // forecastData.forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
+    displayLocation("Error: Failed to get forecast, please try again or a different location")
   }
 }
 
