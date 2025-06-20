@@ -1,4 +1,5 @@
 import { degrees, forecastData } from "./get-data";
+// import { getUVIcon } from "./display-icons";
 
 export function displayLocation(location) {
   const locationHeader = document.querySelector("#location-header");
@@ -35,11 +36,12 @@ export function removeForecast() {
 }
 
 function displayDayHourly(day) {
-  removeForecast()
-  forecastData.filter((item) => {
-    return item.fullDate === day
-  })
-  .forEach(displayForecast);
+  removeForecast();
+  forecastData
+    .filter((item) => {
+      return item.fullDate === day;
+    })
+    .forEach(displayForecast);
 
   const backButton = document.createElement("button");
   backButton.textContent = "Back";
@@ -51,9 +53,9 @@ function displayDayHourly(day) {
       .filter((item) => {
         return item.period === "currentConditions" || item.time === "Full day";
       })
-      .forEach(displayForecast)
-  })
-} 
+      .forEach(displayForecast);
+  });
+}
 
 export function displayForecast(arrayItem) {
   const table = document.querySelector("table");
@@ -76,8 +78,8 @@ export function displayForecast(arrayItem) {
     time.appendChild(hourButton);
 
     hourButton.addEventListener("click", () => {
-      displayDayHourly(arrayItem.fullDate)
-    })
+      displayDayHourly(arrayItem.fullDate);
+    });
   }
 
   const icon = document.createElement("td");
@@ -97,8 +99,17 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(feelsLike);
 
   const uvIndex = document.createElement("td");
-  uvIndex.textContent = arrayItem.uvIndex;
   newRow.appendChild(uvIndex);
+
+  if (arrayItem.uvIndex > 0) {
+    const uvIcon = document.createElement("img");
+    import("./images/UV Icons/uv-index-" + arrayItem.uvIndex + ".svg").then(
+      (module) => {
+        uvIcon.src = module.default;
+      },
+    );
+    uvIndex.appendChild(uvIcon);
+  }
 
   const humidity = document.createElement("td");
   humidity.textContent = Math.round(arrayItem.humidity) + "%";
@@ -121,5 +132,4 @@ export function displayForecast(arrayItem) {
   newRow.appendChild(moonPhase);
 }
 
-// button for hours to filter and re-display
-// add icons for icon, UV moon
+// add icons for icon & moon
