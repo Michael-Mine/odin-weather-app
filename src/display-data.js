@@ -1,5 +1,6 @@
 import { degrees, forecastData } from "./get-data";
-import { getMoonIcon } from "./get-icons";
+import { getForecastIcon } from "./forecast-icons";
+import { getMoonIcon } from "./moon-icons";
 
 export function displayLocation(location) {
   const locationHeader = document.querySelector("#location-header");
@@ -83,8 +84,11 @@ export function displayForecast(arrayItem) {
   }
 
   const icon = document.createElement("td");
-  icon.textContent = arrayItem.icon;
   newRow.appendChild(icon);
+
+  const forecastIcon = document.createElement("img");
+  forecastIcon.src = getForecastIcon(arrayItem.icon);
+  icon.appendChild(forecastIcon);
 
   const conditions = document.createElement("td");
   conditions.textContent = arrayItem.conditions;
@@ -136,5 +140,3 @@ export function displayForecast(arrayItem) {
     moonPhase.appendChild(moonIcon);
   }
 }
-
-// add icons for icon & moon
