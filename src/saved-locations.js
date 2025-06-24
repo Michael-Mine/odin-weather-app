@@ -4,18 +4,18 @@ const savedLocationsList = [];
 const savedList = document.querySelector("#saved-list");
 
 export function getLocalStorageLocations() {
-  if (localStorage.getItem("savedLocations")) {
-    let saved = JSON.parse(localStorage.getItem("savedLocations"));
-    savedLocations.push(...saved);
-    savedLocations.forEach(displaySavedLocations);
+  if (localStorage.getItem("locationsList")) {
+    let saved = JSON.parse(localStorage.getItem("locationsList"));
+    savedLocationsList.push(...saved);
+    savedLocationsList.forEach(displaySavedLocations);
   }
 }
 
 export function saveLocation() {
-  // add to saved array, update localstorage, display on aside
   let newSavedLocation = createSavedLocation(fullWeatherData.resolvedAddress);
   savedLocationsList.push(newSavedLocation);
   console.log(savedLocationsList);
+  localStorage.setItem("locationsList", JSON.stringify(savedLocationsList));
   removeLocationsDisplay();
   savedLocationsList.forEach(displaySavedLocations);
 }
@@ -58,7 +58,6 @@ const editLocationNameButtonCancel = document.querySelector(
 const newLocationName = editLocationNameDialog.querySelector("input");
 
 export function openEditLocationDialog() {
-  // find name in list from fullWeatherData.resolvedAddress
   let currentNameIndex = findLocationInList();
   editLocationNameDialogText.textContent =
     "Change " + savedLocationsList[currentNameIndex].name + " to";
@@ -81,11 +80,48 @@ editLocationNameButtonConfirm.addEventListener("click", (event) => {
 
   let currentNameIndex = findLocationInList();
   savedLocationsList[currentNameIndex].name = newLocationName.value;
-  //   localStorage.setItem("lists", JSON.stringify(lists));
+  localStorage.setItem("locationsList", JSON.stringify(savedLocationsList));
 
   removeLocationsDisplay();
   savedLocationsList.forEach(displaySavedLocations);
 
   editLocationNameDialog.close();
 });
+
+const removeLocationNameDialog = document.querySelector(
+    "#remove-location-dialog",
+  );
+  const removeLocationNameDialogText = document.querySelector(
+    "#remove-location-dialog-text",
+  );
+  const removeLocationNameButtonConfirm = document.querySelector(
+    "#remove-location-dialog-button-confirm",
+  );
+  const removeLocationNameButtonCancel = document.querySelector(
+    "#remove-location-dialog-button-cancel",
+  );
+
+  export function openRemoveLocationDialog() {
+    let currentNameIndex = findLocationInList();
+    removeLocationNameDialogText.textContent =
+      "Remove " + savedLocationsList[currentNameIndex].name + "?";
+    removeLocationNameDialog.showModal();
+  };
+
+  removeLocationNameButtonCancel.addEventListener("click", () => {
+    removeLocationNameDialog.close();
+  });
+  
+  removeLocationNameButtonConfirm.addEventListener("click", (event) => {
+    event.preventDefault();
+  
+    let currentNameIndex = findLocationInList();
+    savedLocationsList.splice(currentNameIndex, 1)
+    localStorage.setItem("locationsList", JSON.stringify(savedLocationsList));
+  
+    removeLocationsDisplay();
+    savedLocationsList.forEach(displaySavedLocations);
+  
+    removeLocationNameDialog.close();
+  });
 

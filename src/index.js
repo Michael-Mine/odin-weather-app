@@ -1,7 +1,7 @@
 import "./styles.css";
 import "./toggle.css";
 import { getWeatherFullData, changeDegrees } from "./get-data";
-import { openEditLocationDialog, saveLocation } from "./saved-locations";
+import { getLocalStorageLocations, openEditLocationDialog, openRemoveLocationDialog, saveLocation } from "./saved-locations";
 
 const location = document.querySelector("#location");
 const searchButton = document.querySelector("#search");
@@ -33,5 +33,7 @@ editButton.addEventListener("click", () => {
 });
 
 removeButton.addEventListener("click", () => {
-  removeLocation()
+  openRemoveLocationDialog();
 });
+
+getLocalStorageLocations();
