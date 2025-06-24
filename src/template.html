@@ -58,56 +58,108 @@
           </a>
         </div>
       </header>
-      <br />
-      <form>
-        <div>
-          <label for="location">Forecast location:</label>
-          <input type="text" name="location" id="location" />
-          <button>Search</button>
-          <span>&degF</span>
-          <label class="toggle">
-            <input class="input" type="checkbox" name="degrees" id="degrees" />
-            <span class="slider"></span>
-          </label>
-          <span>&degC</span>
-        </div>
-      </form>
-      <br />
-      <h2 id="location-header"></h2>
-      <div class="alerts">
-        <h3 id="alerts-event"></h3>
-        <p id="alerts-headline"></p>
-        <p id="alerts-start"></p>
-        <p id="alerts-end"></p>
-        <a id="alerts-link"></a>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Location Time</th>
-            <th>
+      <!-- <aside class="side-bar">
+        <ul id="side-bar-lists">
+          <li class="list-keep">
+            <button id="new-list-button-open" class="side-bar-list-buttons">
+              <p>New List</p>
               <img
-                src="images/weather-sunset.svg"
-                alt="list logo"
-                class="header-logo"
-                height="40px"
-                width="40px"
+                src="images/github-mark.svg"
+                alt="new list icon"
+                class="icons"
+                height="30px"
+                width="30px"
               />
-            </th>
-            <th>Conditions</th>
-            <th>Temperate</th>
-            <th>Feels like</th>
-            <th>UV index</th>
-            <th>Humidity</th>
-            <th>Chance of rain</th>
-            <th>Sunrise</th>
-            <th>Sunset</th>
-            <th>Moon</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
+            </button>
+          </li>
+        </ul>
+        
+      </aside> -->
+      <aside>
+        <ul id="saved-list">
+        </ul>
+      </aside>
+      <br />
+      <section>
+        <form>
+          <div>
+            <label for="location">Forecast location:</label>
+            <input type="text" name="location" id="location" />
+            <button id="search">Search</button>
+            <span>&degF</span>
+            <label class="toggle">
+              <input class="input" type="checkbox" name="degrees" id="degrees" />
+              <span class="slider"></span>
+            </label>
+            <span>&degC</span>
+          </div>
+        </form>
+        <button id="save">Save Location</button>
+        <button id="edit">Edit Saved Location Name</button>
+        <button id="remove">Remove Saved Location</button>
+        <br />
+        
+        <h2 id="location-header"></h2>
+        <div class="alerts">
+          <h3 id="alerts-event"></h3>
+          <p id="alerts-headline"></p>
+          <p id="alerts-start"></p>
+          <p id="alerts-end"></p>
+          <a id="alerts-link"></a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Location Time</th>
+              <th>
+                <img
+                  src="images/weather-sunset.svg"
+                  alt="list logo"
+                  class="header-logo"
+                  height="40px"
+                  width="40px"
+                />
+              </th>
+              <th>Conditions</th>
+              <th>Temperate</th>
+              <th>Feels like</th>
+              <th>UV index</th>
+              <th>Humidity</th>
+              <th>Chance of rain</th>
+              <th>Sunrise</th>
+              <th>Sunset</th>
+              <th>Moon</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <dialog id="edit-location-name-dialog">
+          <h2>Edit Saved Location Name</h2>
+          <p id="edit-location-name-dialog-text"></p>
+          <form>
+            <p>
+              <label for="edit-location-name-input">new name:</label>
+              <input
+                type="text"
+                id="edit-location-name-input"
+                name="edit-location-name"
+              />
+            </p>
+          </form>
+          <br />
+          <button id="edit-location-name-button-confirm">Confirm</button>
+          <button id="edit-location-name-button-cancel" formmethod="dialog">
+            Cancel
+          </button>
+        </dialog>
+        <dialog id="remove-location-dialog">
+          <h2>Remove Saved Location</h2>
+          <p id="remove-location-dialog-text"></p>
+          <button id="remove-location-dialog-button-confirm">Delete</button>
+          <button id="remove-location-dialog-button-cancel">Cancel</button>
+        </dialog>
+      </section>
     </main>
   </body>
 </html>

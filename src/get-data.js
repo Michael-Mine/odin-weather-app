@@ -1,7 +1,4 @@
-import json from "./responseFormat.json" with { type: "json" };
-let fullWeatherData = json;
-// const fullWeatherData = getWeatherFullData("london");
-
+// import json from "./responseFormat.json" with { type: "json" };
 import {
   displayLocation,
   displayAlerts,
@@ -10,6 +7,7 @@ import {
 } from "./display-data";
 
 export let degrees = "F";
+export let fullWeatherData;
 export let locationData;
 export let forecastData = [];
 
@@ -56,7 +54,6 @@ export async function getWeatherFullData(location) {
         return item.period === "currentConditions" || item.time === "Full day";
       })
       .forEach(displayForecast);
-    // forecastData.forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
     displayLocation("Error: Failed to get forecast, please try again or a different location")
