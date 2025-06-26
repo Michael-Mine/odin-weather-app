@@ -1,3 +1,4 @@
+import { checkSavedLocation } from "./index";
 import { fullWeatherData, getWeatherFullData } from "./get-data";
 
 const savedLocationsList = [];
@@ -11,6 +12,13 @@ export function getLocalStorageLocations() {
   }
 }
 
+export function findLocationInList() {
+    let index = savedLocationsList.findIndex(
+      (obj) => obj.resolvedAddress === fullWeatherData.resolvedAddress,
+    );
+    return index;
+  }
+
 export function saveLocation() {
   let newSavedLocation = createSavedLocation(fullWeatherData.resolvedAddress);
   savedLocationsList.push(newSavedLocation);
@@ -18,6 +26,7 @@ export function saveLocation() {
   localStorage.setItem("locationsList", JSON.stringify(savedLocationsList));
   removeLocationsDisplay();
   savedLocationsList.forEach(displaySavedLocations);
+  checkSavedLocation();
 }
 
 function createSavedLocation(resolvedAddress) {
@@ -64,12 +73,6 @@ export function openEditLocationDialog() {
   editLocationNameDialog.showModal();
 }
 
-function findLocationInList() {
-  let index = savedLocationsList.findIndex(
-    (obj) => obj.resolvedAddress === fullWeatherData.resolvedAddress,
-  );
-  return index;
-}
 
 editLocationNameButtonCancel.addEventListener("click", () => {
   editLocationNameDialog.close();
@@ -121,7 +124,8 @@ const removeLocationNameDialog = document.querySelector(
   
     removeLocationsDisplay();
     savedLocationsList.forEach(displaySavedLocations);
-  
+
+    checkSavedLocation();  
     removeLocationNameDialog.close();
   });
 

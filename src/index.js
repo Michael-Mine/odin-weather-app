@@ -1,7 +1,7 @@
 import "./styles.css";
 import "./toggle.css";
 import { getWeatherFullData, changeDegrees } from "./get-data";
-import { getLocalStorageLocations, openEditLocationDialog, openRemoveLocationDialog, saveLocation } from "./saved-locations";
+import { findLocationInList, getLocalStorageLocations, openEditLocationDialog, openRemoveLocationDialog, saveLocation } from "./saved-locations";
 
 const location = document.querySelector("#location");
 const searchButton = document.querySelector("#search");
@@ -35,5 +35,19 @@ editButton.addEventListener("click", () => {
 removeButton.addEventListener("click", () => {
   openRemoveLocationDialog();
 });
+
+export function checkSavedLocation() {
+    let index = findLocationInList()
+    console.log(index)
+    if (index === -1) {
+        saveButton.style.visibility = "visible";
+        editButton.style.visibility = "hidden";
+        removeButton.style.visibility = "hidden";
+    } else {
+        saveButton.style.visibility = "hidden";
+        editButton.style.visibility = "visible";
+        removeButton.style.visibility = "visible";
+    }
+}
 
 getLocalStorageLocations();

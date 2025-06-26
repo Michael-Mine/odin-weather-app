@@ -13,14 +13,14 @@ function changeAlertsDateTime(datetime) {
   return "at " + time + " on " + date;
 }
 
+const alertsEvent = document.querySelector("#alerts-event");
+const alertsHeadline = document.querySelector("#alerts-headline");
+const alertsStart = document.querySelector("#alerts-start");
+const alertsEnd = document.querySelector("#alerts-end");
+const alertsLink = document.querySelector("#alerts-link");
+
 export function displayAlerts(alerts) {
   if (alerts.length > 0) {
-    const alertsEvent = document.querySelector("#alerts-event");
-    const alertsHeadline = document.querySelector("#alerts-headline");
-    const alertsStart = document.querySelector("#alerts-start");
-    const alertsEnd = document.querySelector("#alerts-end");
-    const alertsLink = document.querySelector("#alerts-link");
-
     alertsEvent.textContent = alerts[0].event;
     alertsHeadline.textContent = alerts[0].headline;
     alertsStart.textContent =
@@ -30,6 +30,16 @@ export function displayAlerts(alerts) {
     alertsLink.href = alerts[0].link;
   }
 }
+
+export function removeAlerts() {
+  alertsEvent.textContent = "";
+    alertsHeadline.textContent = "";
+    alertsStart.textContent = "";
+    alertsEnd.textContent = "";
+    alertsLink.textContent = "";
+    alertsLink.href = "";
+}
+
 const tableBody = document.querySelector("#tbody");
 
 export function removeForecast() {

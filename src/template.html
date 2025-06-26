@@ -58,48 +58,29 @@
           </a>
         </div>
       </header>
-      <!-- <aside class="side-bar">
-        <ul id="side-bar-lists">
-          <li class="list-keep">
-            <button id="new-list-button-open" class="side-bar-list-buttons">
-              <p>New List</p>
-              <img
-                src="images/github-mark.svg"
-                alt="new list icon"
-                class="icons"
-                height="30px"
-                width="30px"
-              />
-            </button>
-          </li>
-        </ul>
-        
-      </aside> -->
       <aside>
-        <ul id="saved-list">
-        </ul>
+        <ul id="saved-list"></ul>
       </aside>
       <br />
       <section>
         <form>
-          <div>
-            <label for="location">Forecast location:</label>
-            <input type="text" name="location" id="location" />
-            <button id="search">Search</button>
-            <span>&degF</span>
-            <label class="toggle">
-              <input class="input" type="checkbox" name="degrees" id="degrees" />
-              <span class="slider"></span>
-            </label>
-            <span>&degC</span>
-          </div>
+          <label for="location">Forecast location:</label>
+          <input type="text" name="location" id="location" />
+          <button id="search">Search</button>
+          <span>&degF</span>
+          <label class="toggle">
+            <input class="input" type="checkbox" name="degrees" id="degrees" />
+            <span class="slider"></span>
+          </label>
+          <span>&degC</span>
         </form>
-        <button id="save">Save Location</button>
-        <button id="edit">Edit Saved Location Name</button>
-        <button id="remove">Remove Saved Location</button>
-        <br />
-        
+        <div id="loader" class="loader"></div>
         <h2 id="location-header"></h2>
+        <div id="buttons">
+          <button id="save">Save</button>
+          <button id="edit">Edit Name</button>
+          <button id="remove">Remove</button>
+        </div>
         <div class="alerts">
           <h3 id="alerts-event"></h3>
           <p id="alerts-headline"></p>

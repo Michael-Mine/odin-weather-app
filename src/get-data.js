@@ -1,9 +1,11 @@
 // import json from "./responseFormat.json" with { type: "json" };
+import { checkSavedLocation } from "./index";
 import {
   displayLocation,
   displayAlerts,
   displayForecast,
   removeForecast,
+  removeAlerts,
 } from "./display-data";
 
 export let degrees = "F";
@@ -27,12 +29,14 @@ export function changeDegrees() {
 }
 
 export async function getWeatherFullData(location) {
+  const loader = document.querySelector("#loader")
   const url =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
     location +
     "?key=KGNPQ92K2A2D2GK96CV98SB3F";
   // API key is free and publicly available, so exposed for this personal study project
   try {
+    loader.style.visibility = "visible";
     const response = await fetch(url, { mode: "cors" });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
@@ -46,7 +50,9 @@ export async function getWeatherFullData(location) {
     forecastData = [];
     addDaysForecast();
     console.log(forecastData);
+    checkSavedLocation();
     displayLocation(locationData.location);
+    removeAlerts();
     displayAlerts(locationData.alerts);
     removeForecast();
     forecastData
@@ -58,6 +64,7 @@ export async function getWeatherFullData(location) {
     console.error(error.message);
     displayLocation("Error: Failed to get forecast, please try again or a different location")
   }
+  loader.style.visibility = "hidden";
 }
 
 function processLocationData() {
