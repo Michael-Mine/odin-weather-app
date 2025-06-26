@@ -1,5 +1,6 @@
 import "./styles.css";
 import "./toggle.css";
+import "./loader.css"
 import { getWeatherFullData, changeDegrees } from "./get-data";
 import { findLocationInList, getLocalStorageLocations, openEditLocationDialog, openRemoveLocationDialog, saveLocation } from "./saved-locations";
 
