@@ -33,11 +33,11 @@ export function displayAlerts(alerts) {
 
 export function removeAlerts() {
   alertsEvent.textContent = "";
-    alertsHeadline.textContent = "";
-    alertsStart.textContent = "";
-    alertsEnd.textContent = "";
-    alertsLink.textContent = "";
-    alertsLink.href = "";
+  alertsHeadline.textContent = "";
+  alertsStart.textContent = "";
+  alertsEnd.textContent = "";
+  alertsLink.textContent = "";
+  alertsLink.href = "";
 }
 
 const tableBody = document.querySelector("#tbody");
@@ -98,6 +98,8 @@ export function displayForecast(arrayItem) {
 
   const forecastIcon = document.createElement("img");
   forecastIcon.src = getForecastIcon(arrayItem.icon);
+  forecastIcon.style.height = "70px";
+  forecastIcon.style.width = "70px";
   icon.appendChild(forecastIcon);
 
   const conditions = document.createElement("td");
@@ -147,6 +149,8 @@ export function displayForecast(arrayItem) {
   if (arrayItem.moonPhase) {
     const moonIcon = document.createElement("img");
     moonIcon.src = getMoonIcon(arrayItem.moonPhase);
+    moonIcon.style.height = "70px";
+    moonIcon.style.width = "70px";
     moonPhase.appendChild(moonIcon);
   }
 }

@@ -40,13 +40,13 @@ export function checkSavedLocation() {
     let index = findLocationInList()
     console.log(index)
     if (index === -1) {
-        saveButton.style.visibility = "visible";
-        editButton.style.visibility = "hidden";
-        removeButton.style.visibility = "hidden";
+        saveButton.style.display = "inline";
+        editButton.style.display = "none";
+        removeButton.style.display = "none";
     } else {
-        saveButton.style.visibility = "hidden";
-        editButton.style.visibility = "visible";
-        removeButton.style.visibility = "visible";
+        saveButton.style.display = "none";
+        editButton.style.display = "inline";
+        removeButton.style.display = "inline";
     }
 }
 

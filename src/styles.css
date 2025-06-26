@@ -87,8 +87,8 @@ h6 {
 
 :root {
   --primary-colour-header: #783192;
-  --primary-colour-aside: #ded4e6;
-  --primary-colour-section: #e1c4eb;
+  --primary-colour-aside: #d9b5e6;
+  --primary-colour-section: #e0c4eb;
   --secondary-colour-header: #59bcc8;
   --secondary-colour-light: #c0dbdb;
   --secondary-colour-lightest: #e5f0f0;
@@ -128,6 +128,12 @@ header {
   color: var(--secondary-colour-header);
 }
 
+h1,
+h2,
+h3 {
+  font-family: "Montserrat";
+}
+
 .header-logo {
   filter: invert(78%) sepia(35%) saturate(624%) hue-rotate(137deg)
     brightness(84%) contrast(84%);
@@ -144,60 +150,22 @@ aside {
   font-family: "Montserrat";
 }
 
+ul {
+  list-style-type: none;
+}
+
 section {
   grid-area: main;
   /* display: flex; */
   /* align-content: center; */
 }
 
-h1,
-h2,
-h3 {
-  font-family: "Montserrat";
-}
-
-/* table {
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-
-
-.form {
-  display: flex;
-  justify-content: center;
-}
-
-table {
-  visibility: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  border: 2px solid rgb(200, 200, 200);
-  letter-spacing: 1px;
-  font-size: 0.8rem;
-}
-
-td,
-th {
-  border: 1px solid rgb(190, 190, 190);
-  padding: 10px 20px;
-}
-
-th {
-  background-color: rgb(235, 235, 235);
-  text-align: start;
-}
-
-tr:nth-child(even) td {
-  background-color: rgb(250, 250, 250);
-}
-
-tr:nth-child(odd) td {
-  background-color: rgb(245, 245, 245);
+form {
+  margin-top: 1rem;
 }
 
 .loader {
+  visibility: hidden;
   margin: auto;
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #3498db; /* Blue */
@@ -211,6 +179,48 @@ tr:nth-child(odd) td {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#save, #edit, #remove {
+  /* display: none; */
+
+}
+
+table {
+  visibility: hidden;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  /* border: 2px solid rgb(200, 200, 200); */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+thead tr {
+  /* background-color: #009879; */
+}
+
+td,
+th {
+  border-bottom: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: #e8d2f0;
+  /* text-align: start; */
+}
+
+tr:nth-child(even) td {
+  background-color: #f7effa;
+}
+
+tr:nth-child(odd) td {
+  background-color: #efe1f5;
+}
+
+
 /* My CSS declaration Order
     Positioning
     Display
