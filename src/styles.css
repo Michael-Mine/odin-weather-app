@@ -94,24 +94,16 @@ h6 {
   --secondary-colour-lightest: #e5f0f0;
   --colour-white: #f9f9f9;
 }
-/* header {
-  display: flex;
-  justify-content: center;
-  position: sticky; 
-  top: 0;
-} */
 
 body {
-  /* background-image: linear-gradient(#783192, #59bcc8); */
   background-color: var(--primary-colour-section);
   text-align: center;
   font-family: "Lato";
-  /* color: var(--colour-white); */
 }
 
 main {
   display: grid;
-  grid-template-columns: 11rem 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 4.5rem 100rem;
   grid-template-areas:
     "header header"
@@ -148,57 +140,46 @@ aside {
   grid-area: side-bar;
   background-color: var(--primary-colour-aside);
   font-family: "Montserrat";
+  padding: 1rem;
 }
 
 ul {
   list-style-type: none;
+  padding: 0rem;
+}
+
+li {
+  margin: 0.5rem 0rem;
 }
 
 section {
   grid-area: main;
-  /* display: flex; */
-  /* align-content: center; */
 }
 
 form {
   margin-top: 1rem;
 }
-/* 
-.loader {
-  visibility: hidden;
-  margin: auto;
-  border: 8px solid #f3f3f3; /* Light grey */
-  /* border-top: 8px solid #3498db; /* Blue */
-  /* border-radius: 50%;
-  width:40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}  */
 
 #save, #edit, #remove {
-  /* display: none; */
+  display: none;
 
+}
+
+#degrees {
+  margin-left: 1rem;
+}
+
+#alerts-event {
+ color: #783192;
 }
 
 table {
   visibility: hidden;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1rem auto;
   border-collapse: collapse;
-  /* border: 2px solid rgb(200, 200, 200); */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   letter-spacing: 1px;
   font-size: 0.8rem;
-}
-
-thead tr {
-  /* background-color: #009879; */
 }
 
 td,
@@ -209,7 +190,6 @@ th {
 
 th {
   background-color: #e8d2f0;
-  /* text-align: start; */
 }
 
 tr:nth-child(even) td {
@@ -219,9 +199,6 @@ tr:nth-child(even) td {
 tr:nth-child(odd) td {
   background-color: #efe1f5;
 }
-
-/* 7 buttons, text input */
-
 
 /* My CSS declaration Order
     Positioning

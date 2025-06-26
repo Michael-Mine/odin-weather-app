@@ -56,6 +56,7 @@ function displayDayHourly(day) {
 
   const backButton = document.createElement("button");
   backButton.textContent = "Back";
+  backButton.classList.toggle("button--submit");
   tableBody.appendChild(backButton);
 
   backButton.addEventListener("click", () => {
@@ -86,6 +87,7 @@ export function displayForecast(arrayItem) {
   if (arrayItem.time === "Full day") {
     const hourButton = document.createElement("button");
     hourButton.textContent = "Hourly";
+    hourButton.classList.toggle("button--submit");
     time.appendChild(hourButton);
 
     hourButton.addEventListener("click", () => {

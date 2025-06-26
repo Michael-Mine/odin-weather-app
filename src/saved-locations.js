@@ -45,6 +45,7 @@ function displaySavedLocations(location) {
 
   const listItemButton = document.createElement("button");
   listItemButton.textContent = location.name;
+  listItemButton.classList.toggle("button--submit");
   listItem.appendChild(listItemButton);
 
   listItemButton.addEventListener("click", () => {
