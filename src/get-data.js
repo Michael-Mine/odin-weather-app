@@ -129,6 +129,7 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
   let temp = periodData.temp;
   let feelsLike = periodData.feelslike;
   if (degrees === "C") {
+    // to convert data received in Fahrenheit to Celsius
     temp = (temp - 32) / (9 / 5);
     feelsLike = (feelsLike - 32) / (9 / 5);
   }
