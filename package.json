@@ -17,8 +17,5 @@
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
     "deploy": "git push"
-  },
-  "dependencies": {
-    "@bybas/weather-icons": "^2.0.0"
   }
 }
