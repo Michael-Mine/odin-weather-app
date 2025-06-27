@@ -1,4 +1,3 @@
-// import json from "./responseFormat.json" with { type: "json" };
 import { checkSavedLocation } from "./index";
 import {
   displayLocation,
@@ -29,7 +28,7 @@ export function changeDegrees() {
 }
 
 export async function getWeatherFullData(location) {
-  const loader = document.querySelector("#loader")
+  const loader = document.querySelector("#loader");
   const url =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
     location +
@@ -62,7 +61,9 @@ export async function getWeatherFullData(location) {
       .forEach(displayForecast);
   } catch (error) {
     console.error(error.message);
-    displayLocation("Error: Failed to get forecast, please try again or a different location")
+    displayLocation(
+      "Error: Failed to get forecast, please try again or a different location",
+    );
   }
   loader.style.visibility = "hidden";
 }
