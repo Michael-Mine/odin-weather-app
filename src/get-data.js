@@ -17,7 +17,6 @@ export function changeDegrees() {
   if (forecastData[0]) {
     forecastData = [];
     addDaysForecast();
-    console.log(forecastData);
     removeForecast();
     forecastData
       .filter((item) => {
@@ -43,12 +42,9 @@ export async function getWeatherFullData(location) {
     const json = await response.json();
 
     fullWeatherData = json;
-    console.log(fullWeatherData);
     processLocationData();
-    console.log(locationData);
     forecastData = [];
     addDaysForecast();
-    console.log(forecastData);
     checkSavedLocation();
     displayLocation(locationData.location);
     removeAlerts();
@@ -130,7 +126,6 @@ function createWeatherPeriod(period, dayPeriod, hourPeriod) {
   let temp = periodData.temp;
   let feelsLike = periodData.feelslike;
   if (degrees === "C") {
-    // to convert data received in Fahrenheit to Celsius
     temp = (temp - 32) / (9 / 5);
     feelsLike = (feelsLike - 32) / (9 / 5);
   }

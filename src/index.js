@@ -1,9 +1,15 @@
 import "./styles.css";
-import "./buttons.css"
+import "./buttons.css";
 import "./toggle.css";
 import "./loader.css";
 import { getWeatherFullData, changeDegrees } from "./get-data";
-import { findLocationInList, getLocalStorageLocations, openEditLocationDialog, openRemoveLocationDialog, saveLocation } from "./saved-locations";
+import {
+  findLocationInList,
+  getLocalStorageLocations,
+  openEditLocationDialog,
+  openRemoveLocationDialog,
+  saveLocation,
+} from "./saved-locations";
 
 const location = document.querySelector("#location");
 const searchButton = document.querySelector("#search");
@@ -27,7 +33,7 @@ degrees.addEventListener("change", () => {
 });
 
 saveButton.addEventListener("click", () => {
-  saveLocation()
+  saveLocation();
 });
 
 editButton.addEventListener("click", () => {
@@ -39,17 +45,16 @@ removeButton.addEventListener("click", () => {
 });
 
 export function checkSavedLocation() {
-    let index = findLocationInList()
-    console.log(index)
-    if (index === -1) {
-        saveButton.style.display = "inline";
-        editButton.style.display = "none";
-        removeButton.style.display = "none";
-    } else {
-        saveButton.style.display = "none";
-        editButton.style.display = "inline";
-        removeButton.style.display = "inline";
-    }
+  let index = findLocationInList();
+  if (index === -1) {
+    saveButton.style.display = "inline";
+    editButton.style.display = "none";
+    removeButton.style.display = "none";
+  } else {
+    saveButton.style.display = "none";
+    editButton.style.display = "inline";
+    removeButton.style.display = "inline";
+  }
 }
 
 getLocalStorageLocations();
